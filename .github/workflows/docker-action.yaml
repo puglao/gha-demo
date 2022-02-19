@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: puglao/gha-docker-demo@v1
+        uses: puglao/gha-docker-demo@master
         with:
           echoMessage: 'puglao'
       # Use the output from the `hello` step
