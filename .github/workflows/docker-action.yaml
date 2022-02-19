@@ -14,11 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
+      - name: Set env variable for workflow_dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "echoMessage=${{ inputs.echoMessage }}" >> $GITHUB_ENV
       - name: Hello world action step
         id: hello
         uses: puglao/gha-docker-demo@master
-        with:
-          echoMessage: 'puglao'
       # Use the output from the `hello` step
       - name: Get the output hash
-        run: echo "The time was ${{ steps.hello.outputs.runHex }}"
+        run: echo "Hash of ${echoMessage} is ${{ steps.hello.outputs.runHex }}"
