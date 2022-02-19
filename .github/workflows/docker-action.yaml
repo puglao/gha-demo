@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "echoMessage=${{ github.event.inputs.echoMessage }}" >> $GITHUB_ENV
       - name: hellow with Manualinput
-        id: hello
+        id: hello-manual
         with:
           echoMessage: 'manualInputString'
         uses: puglao/gha-docker-demo@master
@@ -27,7 +27,7 @@ jobs:
       - name: Get the output hash
         run: echo "Hash of ${echoMessage} is ${{ steps.hello.outputs.runHex }}"
       - name: hellow with default
-        id: hello
+        id: hello-default
         uses: puglao/gha-docker-demo@master
       # Use the output from the `hello` step
       - name: Get the output hash
