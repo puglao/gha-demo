@@ -18,7 +18,15 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: |
           echo "echoMessage=${{ github.event.inputs.echoMessage }}" >> $GITHUB_ENV
-      - name: Hello world action step
+      - name: hellow with Manualinput
+        id: hello
+        with:
+          echoMessage: 'manualInputString'
+        uses: puglao/gha-docker-demo@master
+      # Use the output from the `hello` step
+      - name: Get the output hash
+        run: echo "Hash of ${echoMessage} is ${{ steps.hello.outputs.runHex }}"
+      - name: hellow with default
         id: hello
         uses: puglao/gha-docker-demo@master
       # Use the output from the `hello` step
