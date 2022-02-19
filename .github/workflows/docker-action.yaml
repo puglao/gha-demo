@@ -17,7 +17,7 @@ jobs:
       - name: Set env variable for workflow_dispatch
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "echoMessage=${{ inputs.echoMessage }}" >> $GITHUB_ENV
+          echo "echoMessage=${{ github.event.inputs.echoMessage }}" >> $GITHUB_ENV
       - name: Hello world action step
         id: hello
         uses: puglao/gha-docker-demo@master
